@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedTheme, onThemeChange, po
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${portfolioData.personalInfo.fullName.replace(/\s+/g, '_')}_portfolio.json`;
+    link.download = `${portfolioData.personalInfo.name.replace(/\s+/g, '_')}_portfolio.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

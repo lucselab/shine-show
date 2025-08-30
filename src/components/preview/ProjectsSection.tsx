@@ -52,7 +52,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, them
               
               <div className="mb-4">
                 <div className="flex flex-wrap gap-2">
-                  {project.technologies
+                  {project.techStack
                     .filter(tech => tech.trim())
                     .map((tech, index) => (
                     <span
@@ -66,9 +66,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, them
               </div>
               
               <div className="flex space-x-4">
-                {project.liveUrl && (
+                {project.liveurl && (
                   <a
-                    href={project.liveUrl}
+                    href={project.liveurl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex items-center space-x-2 ${theme.primary} hover:underline font-medium`}
@@ -78,9 +78,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, them
                   </a>
                 )}
                 
-                {project.githubUrl && (
+                {project.githuburl && (
                   <a
-                    href={project.githubUrl}
+                    href={project.githuburl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex items-center space-x-2 ${theme.primary} hover:underline font-medium`}

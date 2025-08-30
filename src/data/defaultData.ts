@@ -2,22 +2,31 @@ import { PortfolioData } from '../types/portfolio';
 
 export const defaultPortfolioData: PortfolioData = {
   personalInfo: {
-    fullName: 'Alex Johnson',
-    title: 'Full Stack Developer',
+    name: 'Alex Johnson',
     email: 'alex.johnson@email.com',
-    phone: '+1 (555) 123-4567',
-    location: 'San Francisco, CA',
-    website: 'https://alexjohnson.dev',
-    linkedin: 'https://linkedin.com/in/alexjohnson',
-    github: 'https://github.com/alexjohnson',
-    about: 'Passionate full-stack developer with 5+ years of experience building scalable web applications. I love creating efficient, user-friendly solutions that solve real-world problems.',
-    profileImage: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400'
+    title: 'Full Stack Developer',
+    slogan: 'Building the future, one line of code at a time',
+    bio: 'Passionate full-stack developer with 5+ years of experience building scalable web applications. I love creating efficient, user-friendly solutions that solve real-world problems.',
+    profileImage: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400',
+    socialLinks: {
+      resume: '',
+      github: 'https://github.com/alexjohnson',
+      linkedin: 'https://linkedin.com/in/alexjohnson',
+      twitter: 'https://twitter.com/alexjohnson',
+      facebook: '',
+      whatsapp: ''
+    },
+    contactInfo: {
+      phone: '+1 (555) 123-4567',
+      address: 'San Francisco, CA'
+    }
   },
   experiences: [
     {
       id: '1',
+      title: 'Senior Frontend Developer',
       company: 'TechCorp Inc.',
-      position: 'Senior Frontend Developer',
+      location: 'San Francisco, CA',
       startDate: '2022-01',
       endDate: '',
       current: true,
@@ -30,8 +39,9 @@ export const defaultPortfolioData: PortfolioData = {
     },
     {
       id: '2',
+      title: 'Full Stack Developer',
       company: 'StartupXYZ',
-      position: 'Full Stack Developer',
+      location: 'Remote',
       startDate: '2020-06',
       endDate: '2021-12',
       current: false,
@@ -48,33 +58,33 @@ export const defaultPortfolioData: PortfolioData = {
       id: '1',
       title: 'E-commerce Platform',
       description: 'Full-featured e-commerce platform with cart, payments, and admin dashboard built with React, Node.js, and Stripe.',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
-      liveUrl: 'https://ecommerce-demo.com',
-      githubUrl: 'https://github.com/alexjohnson/ecommerce-platform',
+      liveurl: 'https://ecommerce-demo.com',
+      githuburl: 'https://github.com/alexjohnson/ecommerce-platform',
       imageUrl: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
+      techStack: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
       featured: true
     },
     {
       id: '2',
       title: 'Task Management App',
       description: 'Collaborative task management application with real-time updates and team collaboration features.',
-      technologies: ['React', 'Firebase', 'Material-UI', 'TypeScript'],
-      liveUrl: 'https://taskmanager-demo.com',
-      githubUrl: 'https://github.com/alexjohnson/task-manager',
+      liveurl: 'https://taskmanager-demo.com',
+      githuburl: 'https://github.com/alexjohnson/task-manager',
       imageUrl: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      techStack: ['React', 'Firebase', 'Material-UI', 'TypeScript'],
       featured: true
     }
   ],
   education: [
     {
       id: '1',
-      institution: 'University of California',
+      school: 'University of California',
       degree: 'Bachelor of Science',
-      field: 'Computer Science',
+      fieldOfStudy: 'Computer Science',
       startDate: '2016-09',
       endDate: '2020-05',
-      gpa: '3.8',
-      achievements: [
+      grade: '3.8',
+      honors: [
         'Magna Cum Laude',
         'Dean\'s List 6 semesters',
         'Computer Science Excellence Award'

@@ -14,13 +14,13 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
   const addEducation = () => {
     const newEducation: Education = {
       id: Date.now().toString(),
-      institution: '',
+      school: '',
       degree: '',
-      field: '',
+      fieldOfStudy: '',
       startDate: '',
       endDate: '',
-      gpa: '',
-      achievements: ['']
+      grade: '',
+      honors: ['']
     };
     onUpdate([...education, newEducation]);
   };
@@ -39,7 +39,7 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
     const edu = education.find(e => e.id === educationId);
     if (edu) {
       updateEducation(educationId, {
-        achievements: [...edu.achievements, '']
+        honors: [...edu.honors, '']
       });
     }
   };
@@ -47,17 +47,17 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
   const updateAchievement = (educationId: string, index: number, value: string) => {
     const edu = education.find(e => e.id === educationId);
     if (edu) {
-      const newAchievements = [...edu.achievements];
-      newAchievements[index] = value;
-      updateEducation(educationId, { achievements: newAchievements });
+      const newHonors = [...edu.honors];
+      newHonors[index] = value;
+      updateEducation(educationId, { honors: newHonors });
     }
   };
 
   const removeAchievement = (educationId: string, index: number) => {
     const edu = education.find(e => e.id === educationId);
-    if (edu && edu.achievements.length > 1) {
-      const newAchievements = edu.achievements.filter((_, i) => i !== index);
-      updateEducation(educationId, { achievements: newAchievements });
+    if (edu && edu.honors.length > 1) {
+      const newHonors = edu.honors.filter((_, i) => i !== index);
+      updateEducation(educationId, { honors: newHonors });
     }
   };
 
@@ -81,7 +81,7 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
               <div className="flex items-center space-x-2">
                 <GraduationCap className="w-4 h-4 text-gray-600" />
                 <span className="text-sm font-medium text-gray-900">
-                  {edu.institution || 'New Education'}
+                  {edu.school || 'New Education'}
                 </span>
               </div>
               <button
@@ -95,12 +95,12 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
             <div className="grid grid-cols-1 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Institution
+                  School/Institution
                 </label>
                 <input
                   type="text"
-                  value={edu.institution}
-                  onChange={(e) => updateEducation(edu.id, { institution: e.target.value })}
+                  value={edu.school}
+                  onChange={(e) => updateEducation(edu.id, { school: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
@@ -125,8 +125,8 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
                   </label>
                   <input
                     type="text"
-                    value={edu.field}
-                    onChange={(e) => updateEducation(edu.id, { field: e.target.value })}
+                    value={edu.fieldOfStudy}
+                    onChange={(e) => updateEducation(edu.id, { fieldOfStudy: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Computer Science"
                   />
@@ -160,12 +160,12 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    GPA (Optional)
+                    Grade (Optional)
                   </label>
                   <input
                     type="text"
-                    value={edu.gpa || ''}
-                    onChange={(e) => updateEducation(edu.id, { gpa: e.target.value })}
+                    value={edu.grade || ''}
+                    onChange={(e) => updateEducation(edu.id, { grade: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="3.8"
                   />
@@ -175,27 +175,27 @@ export const EducationEditor: React.FC<EducationEditorProps> = ({
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="block text-sm font-medium text-gray-700">
-                    Achievements & Honors
+                    Honors & Achievements
                   </label>
                   <button
                     onClick={() => addAchievement(edu.id)}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                   >
-                    + Add Achievement
+                    + Add Honor
                   </button>
                 </div>
                 
                 <div className="space-y-2">
-                  {edu.achievements.map((achievement, index) => (
+                  {edu.honors.map((honor, index) => (
                     <div key={index} className="flex items-center space-x-2">
                       <input
                         type="text"
-                        value={achievement}
+                        value={honor}
                         onChange={(e) => updateAchievement(edu.id, index, e.target.value)}
                         className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="Achievement or honor..."
+                        placeholder="Honor or achievement..."
                       />
-                      {edu.achievements.length > 1 && (
+                      {edu.honors.length > 1 && (
                         <button
                           onClick={() => removeAchievement(edu.id, index)}
                           className="text-red-600 hover:text-red-800 transition-colors duration-200"

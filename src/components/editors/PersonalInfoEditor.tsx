@@ -14,6 +14,26 @@ export const PersonalInfoEditor: React.FC<PersonalInfoEditorProps> = ({
     onUpdate({ ...personalInfo, [field]: value });
   };
 
+  const handleSocialLinkChange = (platform: keyof PersonalInfo['socialLinks'], value: string) => {
+    onUpdate({
+      ...personalInfo,
+      socialLinks: {
+        ...personalInfo.socialLinks,
+        [platform]: value
+      }
+    });
+  };
+
+  const handleContactInfoChange = (field: keyof PersonalInfo['contactInfo'], value: string) => {
+    onUpdate({
+      ...personalInfo,
+      contactInfo: {
+        ...personalInfo.contactInfo,
+        [field]: value
+      }
+    });
+  };
+
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -26,8 +46,8 @@ export const PersonalInfoEditor: React.FC<PersonalInfoEditorProps> = ({
             </label>
             <input
               type="text"
-              value={personalInfo.fullName}
-              onChange={(e) => handleChange('fullName', e.target.value)}
+              value={personalInfo.name}
+              onChange={(e) => handleChange('name', e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
@@ -43,81 +63,30 @@ export const PersonalInfoEditor: React.FC<PersonalInfoEditorProps> = ({
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                value={personalInfo.email}
-                onChange={(e) => handleChange('email', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Phone
-              </label>
-              <input
-                type="tel"
-                value={personalInfo.phone}
-                onChange={(e) => handleChange('phone', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Slogan
+            </label>
+            <input
+              type="text"
+              value={personalInfo.slogan}
+              onChange={(e) => handleChange('slogan', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Your catchy slogan here"
+            />
           </div>
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Location
+              Email
             </label>
             <input
-              type="text"
-              value={personalInfo.location}
-              onChange={(e) => handleChange('location', e.target.value)}
+              type="email"
+              value={personalInfo.email}
+              onChange={(e) => handleChange('email', e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-          </div>
-          
-          <div className="grid grid-cols-1 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Website
-              </label>
-              <input
-                type="url"
-                value={personalInfo.website}
-                onChange={(e) => handleChange('website', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                LinkedIn
-              </label>
-              <input
-                type="url"
-                value={personalInfo.linkedin}
-                onChange={(e) => handleChange('linkedin', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                GitHub
-              </label>
-              <input
-                type="url"
-                value={personalInfo.github}
-                onChange={(e) => handleChange('github', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
           </div>
           
           <div>
@@ -135,14 +104,120 @@ export const PersonalInfoEditor: React.FC<PersonalInfoEditorProps> = ({
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              About Me
+              Bio
             </label>
             <textarea
-              value={personalInfo.about}
-              onChange={(e) => handleChange('about', e.target.value)}
+              value={personalInfo.bio}
+              onChange={(e) => handleChange('bio', e.target.value)}
               rows={4}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Tell visitors about yourself, your experience, and what drives you..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-md font-semibold text-gray-900 mb-4">Contact Information</h3>
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Phone
+            </label>
+            <input
+              type="tel"
+              value={personalInfo.contactInfo.phone}
+              onChange={(e) => handleContactInfoChange('phone', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Address
+            </label>
+            <input
+              type="text"
+              value={personalInfo.contactInfo.address}
+              onChange={(e) => handleContactInfoChange('address', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-md font-semibold text-gray-900 mb-4">Social Links</h3>
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Resume URL
+            </label>
+            <input
+              type="url"
+              value={personalInfo.socialLinks.resume}
+              onChange={(e) => handleSocialLinkChange('resume', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              GitHub
+            </label>
+            <input
+              type="url"
+              value={personalInfo.socialLinks.github}
+              onChange={(e) => handleSocialLinkChange('github', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              LinkedIn
+            </label>
+            <input
+              type="url"
+              value={personalInfo.socialLinks.linkedin}
+              onChange={(e) => handleSocialLinkChange('linkedin', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Twitter
+            </label>
+            <input
+              type="url"
+              value={personalInfo.socialLinks.twitter}
+              onChange={(e) => handleSocialLinkChange('twitter', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Facebook
+            </label>
+            <input
+              type="url"
+              value={personalInfo.socialLinks.facebook}
+              onChange={(e) => handleSocialLinkChange('facebook', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              WhatsApp
+            </label>
+            <input
+              type="url"
+              value={personalInfo.socialLinks.whatsapp}
+              onChange={(e) => handleSocialLinkChange('whatsapp', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
         </div>

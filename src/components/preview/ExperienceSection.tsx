@@ -29,18 +29,24 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                  {experience.position}
+                  {experience.title}
                 </h3>
                 <p className={`text-lg font-medium ${theme.secondary} mb-2`}>
                   {experience.company}
                 </p>
-                <div className="flex items-center space-x-2 text-gray-600">
+                <div className="flex items-center space-x-4 text-gray-600">
                   <Calendar className="w-4 h-4" />
                   <span className="text-sm">
                     {formatDate(experience.startDate)} - {
                       experience.current ? 'Present' : formatDate(experience.endDate)
                     }
                   </span>
+                  {experience.location && (
+                    <>
+                      <span>•</span>
+                      <span className="text-sm">{experience.location}</span>
+                    </>
+                  )}
                 </div>
               </div>
               

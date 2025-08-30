@@ -38,9 +38,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ personalInfo, th
             </a>
           )}
           
-          {personalInfo.phone && (
+          {personalInfo.contactInfo.phone && (
             <a
-              href={`tel:${personalInfo.phone}`}
+              href={`tel:${personalInfo.contactInfo.phone}`}
               className={`flex items-center space-x-4 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border-l-4 ${theme.accent}`}
             >
               <div className={`p-3 ${theme.accent} rounded-lg`}>
@@ -48,19 +48,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ personalInfo, th
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
-                <p className="text-gray-600">{personalInfo.phone}</p>
+                <p className="text-gray-600">{personalInfo.contactInfo.phone}</p>
               </div>
             </a>
           )}
           
-          {personalInfo.location && (
+          {personalInfo.contactInfo.address && (
             <div className={`flex items-center space-x-4 p-6 bg-white rounded-lg shadow-sm border-l-4 ${theme.accent}`}>
               <div className={`p-3 ${theme.accent} rounded-lg`}>
                 <MapPin className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">Location</h3>
-                <p className="text-gray-600">{personalInfo.location}</p>
+                <h3 className="text-lg font-semibold text-gray-900">Address</h3>
+                <p className="text-gray-600">{personalInfo.contactInfo.address}</p>
               </div>
             </div>
           )}

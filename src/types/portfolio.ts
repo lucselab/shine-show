@@ -1,20 +1,29 @@
 export interface PersonalInfo {
-  fullName: string;
-  title: string;
+  name: string;
   email: string;
-  phone: string;
-  location: string;
-  website: string;
-  linkedin: string;
-  github: string;
-  about: string;
+  title: string;
+  slogan: string;
+  bio: string;
   profileImage: string;
+  socialLinks: {
+    resume: string;
+    github: string;
+    linkedin: string;
+    twitter: string;
+    facebook: string;
+    whatsapp: string;
+  };
+  contactInfo: {
+    phone: string;
+    address: string;
+  };
 }
 
 export interface Experience {
   id: string;
+  title: string;
   company: string;
-  position: string;
+  location: string;
   startDate: string;
   endDate: string;
   current: boolean;
@@ -26,29 +35,29 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  technologies: string[];
-  liveUrl: string;
-  githubUrl: string;
+  liveurl: string;
+  githuburl: string;
   imageUrl: string;
+  techStack: string[];
   featured: boolean;
 }
 
 export interface Education {
   id: string;
-  institution: string;
+  school: string;
   degree: string;
-  field: string;
+  fieldOfStudy: string;
   startDate: string;
   endDate: string;
-  gpa?: string;
-  achievements: string[];
+  grade: string;
+  honors: string[];
 }
 
 export interface Skill {
   id: string;
   name: string;
-  level: number;
   category: string;
+  level: number;
 }
 
 export interface PortfolioData {

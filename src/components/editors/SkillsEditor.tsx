@@ -7,7 +7,7 @@ interface SkillsEditorProps {
   onUpdate: (skills: Skill[]) => void;
 }
 
-const skillCategories = ['Frontend', 'Backend', 'Database', 'Cloud', 'Tools', 'Other'];
+const skillCategories = ['Technical', 'Frontend', 'Backend', 'Database', 'Cloud', 'Tools', 'Other'];
 
 export const SkillsEditor: React.FC<SkillsEditorProps> = ({
   skills,
@@ -18,7 +18,7 @@ export const SkillsEditor: React.FC<SkillsEditorProps> = ({
       id: Date.now().toString(),
       name: '',
       level: 50,
-      category: 'Frontend'
+      category: 'Technical'
     };
     onUpdate([...skills, newSkill]);
   };

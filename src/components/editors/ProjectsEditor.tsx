@@ -16,10 +16,10 @@ export const ProjectsEditor: React.FC<ProjectsEditorProps> = ({
       id: Date.now().toString(),
       title: '',
       description: '',
-      technologies: [''],
-      liveUrl: '',
-      githubUrl: '',
+      liveurl: '',
+      githuburl: '',
       imageUrl: '',
+      techStack: [''],
       featured: false
     };
     onUpdate([...projects, newProject]);
@@ -35,29 +35,29 @@ export const ProjectsEditor: React.FC<ProjectsEditorProps> = ({
     onUpdate(projects.filter(project => project.id !== id));
   };
 
-  const addTechnology = (projectId: string) => {
+  const addTechStack = (projectId: string) => {
     const project = projects.find(p => p.id === projectId);
     if (project) {
       updateProject(projectId, {
-        technologies: [...project.technologies, '']
+        techStack: [...project.techStack, '']
       });
     }
   };
 
-  const updateTechnology = (projectId: string, index: number, value: string) => {
+  const updateTechStack = (projectId: string, index: number, value: string) => {
     const project = projects.find(p => p.id === projectId);
     if (project) {
-      const newTechnologies = [...project.technologies];
-      newTechnologies[index] = value;
-      updateProject(projectId, { technologies: newTechnologies });
+      const newTechStack = [...project.techStack];
+      newTechStack[index] = value;
+      updateProject(projectId, { techStack: newTechStack });
     }
   };
 
-  const removeTechnology = (projectId: string, index: number) => {
+  const removeTechStack = (projectId: string, index: number) => {
     const project = projects.find(p => p.id === projectId);
-    if (project && project.technologies.length > 1) {
-      const newTechnologies = project.technologies.filter((_, i) => i !== index);
-      updateProject(projectId, { technologies: newTechnologies });
+    if (project && project.techStack.length > 1) {
+      const newTechStack = project.techStack.filter((_, i) => i !== index);
+      updateProject(projectId, { techStack: newTechStack });
     }
   };
 
@@ -128,8 +128,8 @@ export const ProjectsEditor: React.FC<ProjectsEditorProps> = ({
                   </label>
                   <input
                     type="url"
-                    value={project.liveUrl}
-                    onChange={(e) => updateProject(project.id, { liveUrl: e.target.value })}
+                    value={project.liveurl}
+                    onChange={(e) => updateProject(project.id, { liveurl: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -140,8 +140,8 @@ export const ProjectsEditor: React.FC<ProjectsEditorProps> = ({
                   </label>
                   <input
                     type="url"
-                    value={project.githubUrl}
-                    onChange={(e) => updateProject(project.id, { githubUrl: e.target.value })}
+                    value={project.githuburl}
+                    onChange={(e) => updateProject(project.id, { githuburl: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -163,29 +163,29 @@ export const ProjectsEditor: React.FC<ProjectsEditorProps> = ({
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="block text-sm font-medium text-gray-700">
-                    Technologies Used
+                    Tech Stack
                   </label>
                   <button
-                    onClick={() => addTechnology(project.id)}
+                    onClick={() => addTechStack(project.id)}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                   >
-                    + Add Technology
+                    + Add Tech
                   </button>
                 </div>
                 
                 <div className="space-y-2">
-                  {project.technologies.map((tech, index) => (
+                  {project.techStack.map((tech, index) => (
                     <div key={index} className="flex items-center space-x-2">
                       <input
                         type="text"
                         value={tech}
-                        onChange={(e) => updateTechnology(project.id, index, e.target.value)}
+                        onChange={(e) => updateTechStack(project.id, index, e.target.value)}
                         className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder="Technology name..."
                       />
-                      {project.technologies.length > 1 && (
+                      {project.techStack.length > 1 && (
                         <button
-                          onClick={() => removeTechnology(project.id, index)}
+                          onClick={() => removeTechStack(project.id, index)}
                           className="text-red-600 hover:text-red-800 transition-colors duration-200"
                         >
                           <Trash2 className="w-4 h-4" />

@@ -20,7 +20,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo, theme 
         </div>
         
         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          {personalInfo.fullName}
+          {personalInfo.name}
         </h1>
         
         <p className={`text-xl font-medium ${theme.primary} mb-4`}>
@@ -32,6 +32,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo, theme 
         </p>
       </div>
 
+        <p className={`text-lg italic ${theme.secondary} mb-4`}>
+          {personalInfo.slogan}
+        </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto">
         {personalInfo.email && (
           <a
@@ -43,38 +46,38 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo, theme 
           </a>
         )}
         
-        {personalInfo.phone && (
+        {personalInfo.contactInfo.phone && (
           <a
-            href={`tel:${personalInfo.phone}`}
+            href={`tel:${personalInfo.contactInfo.phone}`}
             className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
           >
             <Phone className={`w-5 h-5 ${theme.primary}`} />
-            <span className="text-gray-700">{personalInfo.phone}</span>
+            <span className="text-gray-700">{personalInfo.contactInfo.phone}</span>
           </a>
         )}
         
-        {personalInfo.location && (
+        {personalInfo.contactInfo.address && (
           <div className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm">
             <MapPin className={`w-5 h-5 ${theme.primary}`} />
-            <span className="text-gray-700">{personalInfo.location}</span>
+            <span className="text-gray-700">{personalInfo.contactInfo.address}</span>
           </div>
         )}
         
-        {personalInfo.website && (
+        {personalInfo.socialLinks.resume && (
           <a
-            href={personalInfo.website}
+            href={personalInfo.socialLinks.resume}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
           >
             <Globe className={`w-5 h-5 ${theme.primary}`} />
-            <span className="text-gray-700">Website</span>
+            <span className="text-gray-700">Resume</span>
           </a>
         )}
         
-        {personalInfo.linkedin && (
+        {personalInfo.socialLinks.linkedin && (
           <a
-            href={personalInfo.linkedin}
+            href={personalInfo.socialLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
@@ -84,15 +87,27 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo, theme 
           </a>
         )}
         
-        {personalInfo.github && (
+        {personalInfo.socialLinks.github && (
           <a
-            href={personalInfo.github}
+            href={personalInfo.socialLinks.github}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
           >
             <Github className={`w-5 h-5 ${theme.primary}`} />
             <span className="text-gray-700">GitHub</span>
+          {personalInfo.bio}
+        )}
+        
+        {personalInfo.socialLinks.twitter && (
+          <a
+            href={personalInfo.socialLinks.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+          >
+            <Globe className={`w-5 h-5 ${theme.primary}`} />
+            <span className="text-gray-700">Twitter</span>
           </a>
         )}
       </div>
