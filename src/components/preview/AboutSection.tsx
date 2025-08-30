@@ -96,8 +96,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ personalInfo, theme 
           >
             <Github className={`w-5 h-5 ${theme.primary}`} />
             <span className="text-gray-700">GitHub</span>
-          {personalInfo.bio}
+          </a>
         )}
+          {personalInfo.bio}
         
         {personalInfo.socialLinks.twitter && (
           <a
